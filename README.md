@@ -2,13 +2,13 @@
 Luci for JD dailybonus Script for Openwrt  
 一个运行在openwrt下的京东签到插件。
 
-### Update Log 2020-09-16  
 
-#### Updates
 
-- FIX: 去除node-request 的单独编译依赖，改为内置集成。
-- FIX: 去除coreutils-nohup 的依赖。
+### Update Log 2021-03-16  v1.0.5
 
+#### Updates 
+
+- FIX: 修正新的PR依赖jQuery的问题。
 
 详情见[具体日志](./relnotes.txt)。 
 
@@ -37,17 +37,36 @@ make -j1 V=s #编译固件
 
 ⚠️安装步骤[重要]⚠️  
 
+目前插件已经不再需要node-request 依赖，如果之前有安装的，请到软件包进行卸载。
+但是node 是必要依赖，请必须确认已经安装Node。
 1.自行安装Node [命令: opkg update && opkg install node]
   (如果已经安装node版本的网易云插件则可以跳过)   
   
-2.安装luci-app-jd-dailybonus
+2.需要安装以下依赖：
+```
+opkg update  
+opkg install node wget lua
+```
+如果更新ipk后无法获取二维码  
+```
+#登录ssh后执行
+rm -rf /tmp/luci-indexcache /tmp/luci-modulecache/*
+```
+3.安装luci-app-jd-dailybonus
 
 ### 感谢
 
 感谢[NobyDa](https://github.com/NobyDa) 的脚本。  
+感谢[Promix953](https://github.com/Promix953) 的二次开发。  
+感谢[maple's sky](https://github.com/maplesky) 的二次开发。  
+感谢[Mattraks](https://github.com/Mattraks) 的bug修复。 
 
 ### 我的其它项目
 Argon theme ：https://github.com/jerrykuku/luci-theme-argon  
-Argon theme config  ：https://github.com/jerrykuku/luci-app-argon-config
+Argon theme config  ：https://github.com/jerrykuku/luci-app-argon-config  
 Hello World ：https://github.com/jerrykuku/luci-app-vssr  
 openwrt-nanopi-r1s-h5 ： https://github.com/jerrykuku/openwrt-nanopi-r1s-h5  
+
+### 支持我
+如果你觉得我做的不错，可以赞赏一下。
+<img src="https://raw.githubusercontent.com/jerrykuku/staff/master/photo_2019-12-22_11-40-20.jpg" width="300" height="300">
